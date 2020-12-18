@@ -24,7 +24,7 @@ public class Board extends JPanel implements ActionListener {
 	private final int DOT_SIZE = 20;
 	private final int ALL_DOTS = 900;
 	private final int RAND_POS = 29;
-	private final int DELAY = 140;
+	private final int SPEED = 100;
 	
 	private final int x[] = new int[ALL_DOTS];
 	private final int y[] = new int[ALL_DOTS];
@@ -70,14 +70,14 @@ public class Board extends JPanel implements ActionListener {
 		ImageIcon iib = new ImageIcon(this.getClass().getResource("/res/green_dot.jpg"));
 		body = iib.getImage();
 		newimg = body.getScaledInstance(DOT_SIZE, DOT_SIZE,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-		iia = new ImageIcon(newimg);  // transform it back
-		body = iia.getImage();
+		iib = new ImageIcon(newimg);  // transform it back
+		body = iib.getImage();
 		
-		ImageIcon iih = new ImageIcon(this.getClass().getResource("/res/red_dot.jpg"));
+		ImageIcon iih = new ImageIcon(this.getClass().getResource("/res/right_head.jpg"));
 		head = iih.getImage();
 		newimg = head.getScaledInstance(DOT_SIZE, DOT_SIZE,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-		iia = new ImageIcon(newimg);  // transform it back
-		head = iia.getImage();
+		iih = new ImageIcon(newimg);  // transform it back
+		head = iih.getImage();
 	}
 	
 	private void initGame()
@@ -92,7 +92,7 @@ public class Board extends JPanel implements ActionListener {
 		
 		placeApple();
 		
-		timer = new Timer(DELAY, this);
+		timer = new Timer(SPEED, this);
 		timer.start();
 	}
 	
@@ -171,17 +171,50 @@ public class Board extends JPanel implements ActionListener {
 			y[i] = y[i-1];
 		}
 		
-		if (left) 
+		if (left)
+		{
 			x[0] -= DOT_SIZE;
+			
+			ImageIcon iih = new ImageIcon(this.getClass().getResource("/res/left_head.jpg"));
+			head = iih.getImage();
+			Image newimg = head.getScaledInstance(DOT_SIZE, DOT_SIZE,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			iih = new ImageIcon(newimg);  // transform it back
+			head = iih.getImage();
+		
+		}
 				
 		if (right) 
+		{
 			x[0] += DOT_SIZE;
+			
+			ImageIcon iih = new ImageIcon(this.getClass().getResource("/res/right_head.jpg"));
+			head = iih.getImage();
+			Image newimg = head.getScaledInstance(DOT_SIZE, DOT_SIZE,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			iih = new ImageIcon(newimg);  // transform it back
+			head = iih.getImage();
+		}
 		
 		if (up) 
+		{
 			y[0] -= DOT_SIZE;
+			
+			ImageIcon iih = new ImageIcon(this.getClass().getResource("/res/up_head.jpg"));
+			head = iih.getImage();
+			Image newimg = head.getScaledInstance(DOT_SIZE, DOT_SIZE,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			iih = new ImageIcon(newimg);  // transform it back
+			head = iih.getImage();
+		}
 		
 		if (down) 
+		{
 			y[0] += DOT_SIZE;
+			
+			ImageIcon iih = new ImageIcon(this.getClass().getResource("/res/down_head.jpg"));
+			head = iih.getImage();
+			Image newimg = head.getScaledInstance(DOT_SIZE, DOT_SIZE,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			iih = new ImageIcon(newimg);  // transform it back
+			head = iih.getImage();
+		}
 
 	}
 	
